@@ -24,7 +24,7 @@ ckeditor = CKEditor(app)
 app.secret_key = os.getenv('SECRET_KEY')
 
 CURRENT_YEAR = datetime.now().year
-MY_EMAIL_ADDRESS = 'peacedara0@gmail.com'
+MY_EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS')
 PASSWORD = os.getenv('APP_PASSWORD')
 smtp_server = "smtp.gmail.com"
 context = ssl.create_default_context()
