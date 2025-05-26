@@ -1,0 +1,63 @@
+{% include 'header.html' %}
+{{ ckeditor.load() }}
+       <header class="masthead" style="background-image: url('static/assets/img/home-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>{{ heading }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+<div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <form method="post" novalidate>
+                        {{ form.hidden_tag() }}
+
+                        <div class="mb-3 fw-bold">
+
+                            {{ form.title.label(class="form-label")}}
+                            {{ form.title(class="form-control") }}
+                             {% for error in form.title.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+                        </div>
+                        <div class="mb-3 fw-bold">
+                            {{ form.subtitle.label(class="form-label") }}
+                            {{ form.subtitle(class="form-control") }}
+                             {% for error in form.subtitle.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+                        </div>
+                        <div class="mb-3 fw-bold">
+                            {{ form.image_url.label(class="form-label") }}
+                            {{ form.image_url(class="form-control") }}
+                             {% for error in form.image_url.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+                        </div>
+                        <div class="mb-3 fw-bold">
+
+                            {{ form.blog_content.label() }}
+                            {{ form.blog_content(class="form-control") }}
+                             {% for error in form.blog_content.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+                        </div>
+                        {% if is_admin %}
+                        <div class="d-flex justify-content-end mb-4">
+{{ form.submit(class="btn btn-primary text-uppercase", value='Update Post' if editing else 'Add Post') }}
+                        </div>
+                        {% endif %}
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+{{ ckeditor.config(name='blog_content') }}
+{% include 'footer.html' %}
