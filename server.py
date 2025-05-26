@@ -47,7 +47,7 @@ class Base(DeclarativeBase):
     pass
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
 
 db = SQLAlchemy(model_class=Base, )
 db.init_app(app)
