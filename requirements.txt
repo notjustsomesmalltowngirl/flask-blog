@@ -5,3 +5,4 @@ Flask-CKEditor
 python-dotenv
 SQLAlchemy
 email-validator
+gunicorn
